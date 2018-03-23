@@ -50,7 +50,7 @@ class Graph:
     def find_nodes(self, tgt):
         return [node for node in self.nodes if node.value == tgt]
         
-    def add_edge(self, fromv, tov, name, weight):
+    def add_edge(self, fromv, tov, name, weight=0, properties=None):
         to_nodes = self.find_nodes(tov)
         from_nodes = self.find_nodes(fromv)
         if len(from_nodes) == 0:
@@ -68,8 +68,8 @@ class Graph:
         from_nodes = self.find_nodes(fromv)
         if from_nodes[0].edge_exists(tov, name):
             raise ValueError('duplicate edge for: {}:{}:{}'.format(fromv, tov, name))
-        
-        from_nodes[0].edges.append(Edge(fromv, tov, name, weight))
+
+        from_nodes[0].edges.append(Edge(fromv, tov, name, weight, properties))
 
 if __name__ == '__main__':
 

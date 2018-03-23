@@ -1,21 +1,25 @@
 
 class Edge:
-    def __init__(self, fv, tv, name, weight):
+    def __init__(self, fv, tv, name='default', weight=0, properties=None):
         self.fv = fv
         self.tv = tv
         self.name = name
         self.weight = weight
-    
+        self.properties = {} if not properties else properties
+
     def __repr__(self):
         return '{}:{}:{}:{}'.format(self.fv, self.tv, self.name, self.weight)
 
 class GraphNode:
-    def __init__(self, value, edges=None):
+    def __init__(self, value, edges=None, properties=None):
         self.value = value
         self.edges = [] if not edges else edges
+        self.properties = {} if not properties else properties
+
     def __repr__(self):
-        return '{} -> {}'.format(self.value, 
+        return '{}:{} -> {}'.format(self.value, self.properties, 
                                  ' '.join([e.__repr__() for e in self.edges]))
+
     def edge_exists(self, tov, edge_name=None):
         list_edges = ([edge for edge in self.edges if edge.tv == tov and 
                        (edge_name is None or edge.name == edge_name)])
@@ -76,5 +80,7 @@ if __name__ == '__main__':
     g.add_edge('woodenville', 'lynwood', 'dist', 7)
     
     g.add_edge('bellevue', 'lynwood', 'friends',  15)
+
+    g.add_node(GraphNode('redmond', properties={'population': 72000, 'area': '12000 sqmiles'}))
 
     print (g)

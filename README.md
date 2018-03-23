@@ -1,10 +1,13 @@
 # An easy to use graph
 
+![alt text](fig.jpeg "graph")
+
+Reference-style: 
 This is a graph written completely in python. It provides an intuitive way to initialize a graph and add vertices and edges. One of the goals is to have the user to the least possible work. The library will guess and work on the user's behalf in some circumstances. For ex, the API allows an edge to be added even when the vertices have not yet been added. In this case, the vertices will be added with the minimal defaults.
 
 ## Usage
 
-# First initialize the graph
+### First initialize the graph
 g = Graph() 
 
 ### Add a vertex to the graph, the vertices will be automatically added
@@ -20,5 +23,9 @@ g.add_edge('bellevue', 'lynwood', 'dist', 5)
 g.add_edge('bellevue', 'lynwood', 'growth', 5)
 g.add_edge('lynwood', 'bellevue', 'growth', 5)
 
-### look at the graph
+### Look at the graph
 print (g)
+
+### Run tests
+From the top level directory type:
+`python -munittest discover -v tests`

@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
     name = 'figleaf',
     packages = ['figleaf'],
-    version = '0.1',
+    version = '0.2',
     description = 'A graph that is easy to use',
     author = 'Thushara Wijeratna',
     author_email = 'thushw@gmail.com',

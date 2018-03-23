@@ -1,3 +1,6 @@
+import logging
+logging.basicConfig(format='%(asctime)s %(message)s')
+logger = logging.getLogger(__name__)
 
 class Edge:
     def __init__(self, fv, tv, name='default', weight=0, properties=None):
@@ -42,7 +45,7 @@ class Graph:
         #add any nodes on the other side of edges
         for e in node.edges:
             if not self.find_nodes(e.tv):
-                print ('adding missing node for {}'.format(e.tv))
+                logger.debug ('adding missing node for {}'.format(e.tv))
                 self.nodes.append(GraphNode(e.tv))
         
         self.nodes.append(node)
@@ -54,14 +57,14 @@ class Graph:
         to_nodes = self.find_nodes(tov)
         from_nodes = self.find_nodes(fromv)
         if len(from_nodes) == 0:
-            print ('adding missing from vertex')
+            logger.debug ('adding missing from vertex')
             self.add_node(GraphNode(fromv))
         elif len(from_nodes) > 1:
             raise ValueError('{} duplicate vertices exist for: {}'.format(len(from_nodes)-1, fromv))
         if len(to_nodes) > 1:
             raise ValueError('{} duplicate vertices exist for: {}'.format(len(to_nodes)-1, tov))
         elif len(to_nodes) == 0:
-            print ('adding missing to vertex')
+            logger.debug ('adding missing to vertex')
             self.add_node(GraphNode(tov))
             
         #refresh from_nodes, since we may have added some
@@ -73,6 +76,8 @@ class Graph:
 
 if __name__ == '__main__':
 
+    logger.setLevel(logging.DEBUG)
+
     g = Graph()
     g.add_node(GraphNode('seattle', 
                          [Edge('seattle', 'bellevue', 'dist', 10), Edge('seattle', 'lynwood', 'dist', 20)]))
@@ -83,4 +88,4 @@ if __name__ == '__main__':
 
     g.add_node(GraphNode('redmond', properties={'population': 72000, 'area': '12000 sqmiles'}))
 
-    print (g)
+    logger.info (g)

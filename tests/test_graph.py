@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from figleaf.graph import Graph, GraphNode, Edge
+from wildhops.graph import Graph, GraphNode, Edge
 import unittest
 
 class TestGraph(unittest.TestCase):

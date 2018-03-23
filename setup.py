@@ -7,7 +7,7 @@ setup(
     author = 'Thushara Wijeratna',
     author_email = 'thushw@gmail.com',
     url = 'https://github.com/thushw/figleaf',
-    download_url = 'https://github.com/thushw/figleaf/archive/0.1.tar.gz',
+    download_url = 'https://github.com/thushw/figleaf/archive/0.2.tar.gz',
     keywords = ['graph'],
     classifiers = [],
     install_requires=[

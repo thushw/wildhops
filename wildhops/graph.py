@@ -64,7 +64,7 @@ class Graph:
         
         return [node for node in self.nodes if node.value == tgt]
         
-    def add_edge(self, fromv, tov, name, weight=0, properties=None):
+    def add_edge(self, fromv, tov, name='default', weight=0, properties=None):
         to_nodes = self.find_nodes(tov)
         from_nodes = self.find_nodes(fromv)
         if len(from_nodes) == 0:

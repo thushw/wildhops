@@ -54,7 +54,7 @@ class Graph:
         self.nodes.append(node)
 
     def find_node(self, tgt):
-        """ Return the vertext with the given name. """
+        """ Return the vertex with the given name. """
         
         vertices = self.find_nodes(tgt)
         return vertices[0] if vertices else None

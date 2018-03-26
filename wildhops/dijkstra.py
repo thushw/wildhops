@@ -51,17 +51,14 @@ def shortest_paths(graph, from_label):
     #a so far unexplored vertex from an explored (shortest path known) vertex.
     #the key is the vertex name, the value is a tuple where the first element is the distance
     #to the vertex, second is the list of vertices that leads up to it.
+    #at the end of proessing the graph, this hash should contain the shortest paths to each
+    #vertex from <from_label>.
     distance = {from_label: (0, [])} #accumulate known min distance to each vertex
 
     #this holds the vertices where the shortest path is not known yet. the algorithm
     #keeps going until this is empty. whenever a vertex is determined to have the shortest path,
     #it gets removed from this hash.
     unknown = {from_label: 0} #vertices to which the distance is not known
-
-    #this holds the vertices the distance to which are known. at the end, all vertices
-    #connected to <from_label> should have an entry here. whenever a vertex is found to have the
-    #shortest path, it is added here and removed from <unknown>
-    completed = {from_label: 0} #distance to itself is zero
 
     fv = graph.find_node(from_label)
     if not fv: #unconnected vertex
@@ -75,13 +72,10 @@ def shortest_paths(graph, from_label):
         logger.debug('minimum vertex:distance {}:{}'.format(minv, dist))
         min_vertex = graph.find_node(minv)
         logger.debug('minimum vertex {}'.format(min_vertex))
-        completed[minv] = dist
-        logger.debug('completed vertices {}'.format(completed))
         distance, unknown = update_state(distance, unknown, min_vertex)
 
     logger.debug('finished computing distances')
     logger.debug('distances:         {}'.format(distance))
-    logger.debug('completed vertices {}'.format(completed))
     return zip(distance.keys(), distance.values())
 
 

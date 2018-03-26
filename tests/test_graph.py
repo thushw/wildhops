@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
-from wildhops.graph import Graph, GraphNode, Edge
 import unittest
+
+from wildhops.graph import Graph, GraphNode, Edge
 
 class TestGraph(unittest.TestCase):
     def setUp(self):

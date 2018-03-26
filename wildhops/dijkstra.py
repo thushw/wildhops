@@ -37,7 +37,8 @@ def closest_vertex(distance):
 
 def shortest_paths(graph, from_label):
     """ Return shortest paths from <from_label> to all the vertices in the graph <graph>.
-    Returns a list of tuples, where each tuple is of the form (to_label, distance)
+    Returns a list of tuples, where each tuple is of the form (to_label, (distance, [v1,v2..vk]))
+    where v1 through vk are the vertices from <from_label>, inclusive to <to_lablel>, exclusive.
     """
 
     logger.debug('finding paths from {}'.format(from_label))

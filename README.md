@@ -1,8 +1,7 @@
 # An easy to use graph
 
-![alt text](fig.jpeg "graph")
+![alt text](wildhops.jpg "graph")
 
-Reference-style: 
 This is a graph written completely in python. It provides an intuitive way to initialize a graph and add vertices and edges. One of the goals is to have the user do the least possible work. The library will guess and work on the user's behalf in some circumstances. For ex: the API allows an edge to be added even when the vertices have not yet been added. In this case, the vertices will be added with sensible defaults.
 
 ## Usage
